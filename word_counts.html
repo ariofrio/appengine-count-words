@@ -1,0 +1,17 @@
+<!doctype>
+<html>
+  <body>
+    <form action="{{ upload_url }}" method="POST" enctype="multipart/form-data">
+      <h3>Upload a text file--it will add to the word counts</h3>
+      <input type="file" name="file"> <input type="submit" value="Upload">
+    </form>
+    
+    <h2>Top {{ word_counts|length }} words</h2>
+    <dl>
+      {% for word_count in word_counts %}
+        <dt>{{ word_count.key.name }}</dt>
+        <dd>{{ word_count.count }}</dd>
+      {% endfor %}
+    </dl>
+  </body>
+</html>
